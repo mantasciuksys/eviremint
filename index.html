@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MetaMask and TatumSDK</title>
+  <title>Evire Mint - Mint Your Evire Token</title>
+  <meta name="description" content="Mint your Evire token using Metamask. Free and easy to use.">
+  <meta property="og:title" content="Evire Mint - Mint Your Evire Token">
+  <meta property="og:description" content="Mint your Evire token using Metamask. Free and easy to use.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/eviremint%20logo.png">
+  <meta property="og:url" content="https://yourdomain.com"> <!-- Replace with your actual domain -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Evire Mint - Mint Your Evire Token">
+  <meta name="twitter:description" content="Mint your Evire token using Metamask. Free and easy to use.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/eviremint%20logo.png">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
@@ -94,6 +104,15 @@
       mix-blend-mode: darken;
     }
 
+    .disclaimer {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+      border: 1px solid #c3e6cb;
+    }
+
     @media (max-width: 600px) {
       .logo {
         position: static;
@@ -118,8 +137,11 @@
       <h2>Mint Your Evire Token</h2>
       <p>Start by connecting your MetaMask wallet using the Evire testnet.</p>
       <button class="btn" id="signIn">Connect Wallet</button>
+      <div class="disclaimer">
+        <strong>Warning!</strong> Never connect your main wallet to an unknown website. When you do, test it with an empty wallet.
+      </div>
     </div>
- <div class="card">
+    <div class="card">
       <h2>Evire RPC Information</h2>
       <p>New RPC URL: https://testnet-rpc.evire.io</p>
       <p>Chain ID: 787878</p>

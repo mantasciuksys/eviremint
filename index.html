@@ -8,7 +8,7 @@
   <meta property="og:title" content="Evire Mint - Mint Your Evire Token">
   <meta property="og:description" content="Mint your Evire token using Metamask. Free and easy to use.">
   <meta property="og:image" content="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/eviremint%20logo.png">
-  <meta property="og:url" content="http://www.eviremint.xyz/">
+  <meta property="og:url" content="http://www.eviremint.xyz"> <!-- Replace with your actual domain -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Evire Mint - Mint Your Evire Token">
   <meta name="twitter:description" content="Mint your Evire token using Metamask. Free and easy to use.">
@@ -186,6 +186,22 @@
             console.error('Error connecting to MetaMask:', error);
             alert('Failed to connect to MetaMask. Please ensure MetaMask is installed and connected.');
           }
+        } else if (typeof window.web3 !== 'undefined') {
+          // For older dApp browsers that inject window.web3
+          try {
+            await window.web3.currentProvider.enable();
+            console.log('MetaMask connected');
+            button.textContent = 'Connected';
+            button.classList.remove('btn');
+            button.classList.add('btn', 'connected');
+          } catch (error) {
+            console.error('Error connecting to MetaMask:', error);
+            alert('Failed to connect to MetaMask. Please ensure MetaMask is installed and connected.');
+          }
+        } else if (window.navigator.userAgent.includes('Mobi')) {
+          // Mobile device check
+          alert('Please use the MetaMask app to connect.');
+          window.location.href = 'https://metamask.app.link/dapp/www.eviremint.xyz/'; // Replace with your actual domain
         } else {
           console.error('MetaMask is not installed or its impossible to connect to it.');
           alert('MetaMask is not installed. Please install MetaMask and try again.');

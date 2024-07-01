@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +7,7 @@
   <meta property="og:title" content="Evire Mint - Mint Your Evire Token">
   <meta property="og:description" content="Mint your Evire token using Metamask. Free and easy to use.">
   <meta property="og:image" content="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/eviremint%20logo.png">
-  <meta property="og:url" content="http://www.eviremint.xyz"> <!-- Replace with your actual domain -->
+  <meta property="og:url" content="http://www.eviremint.xyz"> 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Evire Mint - Mint Your Evire Token">
   <meta name="twitter:description" content="Mint your Evire token using Metamask. Free and easy to use.">
@@ -17,21 +16,26 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      background: linear-gradient(to top right, #7f989f, #7f989f 70%, #ffffff);
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to top right, #7f989f, #7f989f 70%, #ffffff);
       display: flex;
-      justify-content: center;
-      align-items: left;
-      height: 100%;
-      margin: 0;
-      position: relative;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     #container {
       width: 80%;
       max-width: 600px;
       text-align: left;
+      margin-bottom: 100px;
     }
 
     .card {
@@ -96,12 +100,22 @@
     }
 
     .logo {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
       width: 150px;
       height: auto;
       mix-blend-mode: darken;
+    }
+
+    .tagline {
+      position: fixed;
+      top: 180px;
+      left: 20px;
+      font-size: 45px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-left: 30px;
     }
 
     .disclaimer {
@@ -113,15 +127,45 @@
       border: 1px solid #c3e6cb;
     }
 
+    footer {
+      background-color: #7f989f;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      color: white;
+    }
+
+    footer img {
+      width: 30px;
+      height: auto;
+      vertical-align: middle;
+      mix-blend-mode: darken;
+    }
+
     @media (max-width: 600px) {
+      body {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0px;
+      }
+
       .logo {
         position: static;
         margin: 0 auto 20px auto;
         display: block;
       }
 
+      .tagline {
+        position: static;
+        margin: 0 auto 20px auto;
+        text-align: center;
+        font-size: 36px;
+        line-height: 1.3;
+      }
+
       #container {
         text-align: left;
+        margin-left: 0;
       }
 
       label {
@@ -131,8 +175,13 @@
   </style>
 </head>
 <body>
+  <img src="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/Eviremint.webp" alt="Logo" class="logo">
+  <div class="tagline">
+    We Aim to Make <br>
+    Tokenization <br>
+    Easy.
+  </div>
   <div id="container">
-    <img src="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/Eviremint.webp" alt="Logo" class="logo">
     <div class="card" id="signin">
       <h2>Mint Your Evire Token</h2>
       <p>Start by connecting your MetaMask wallet using the Evire testnet.</p>
@@ -152,23 +201,28 @@
       <h3>Enter the name, symbol, decimals, and initial supply of your Evire (ERC-20) token.</h3>
       <form onsubmit="create(); return false;">
         <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Enter the name of the token" required />
+        <input type="text" id="name" placeholder="Enter the name of the token" required="">
         <label for="symbol">Symbol:</label>
-        <input type="text" id="symbol" placeholder="Enter the symbol of the token" required />
+        <input type="text" id="symbol" placeholder="Enter the symbol of the token" required="">
         <label for="decimals">Decimals:</label>
-        <input type="number" min="0" max="30" step="1" id="decimals" placeholder="Enter the decimals of the token" required />
+        <input type="number" min="0" max="30" step="1" id="decimals" placeholder="Enter the decimals of the token" required="">
         <label for="supply">Initial supply:</label>
-        <input type="text" id="supply" placeholder="Enter the initial supply of the token" required />
+        <input type="text" id="supply" placeholder="Enter the initial supply of the token" required="">
         <button type="submit" class="btn">Create Token</button>
       </form>
     </div>
     <div class="card hidden" id="tx">
       <h2>Transaction result from MetaMask</h2>
-      <div id="hash"></div><br/>
-      <button class="btn" onclick="getContractAddress()">Get contract address</button><br/><br/>
+      <div id="hash"></div><br>
+      <button class="btn" onclick="getContractAddress()">Get contract address</button><br><br>
       <div id="contractAddress"></div>      
     </div>
   </div>
+
+  <footer>
+    <img src="https://raw.githubusercontent.com/mantasciuksys/eviremint/main/eviremint%20logo.png" alt="Eviremint Logo">
+    <p>Copyright © 2024 Eviremint.xyz. All rights reserved.</p>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -201,7 +255,7 @@
         } else if (window.navigator.userAgent.includes('Mobi')) {
           // Mobile device check
           alert('Please use the MetaMask app to connect.');
-          window.location.href = 'https://metamask.app.link/dapp/www.eviremint.xyz/'; // Replace with your actual domain
+          window.location.href = 'https://metamask.app.link/dapp/http://www.eviremint.xyz/';
         } else {
           console.error('MetaMask is not installed or its impossible to connect to it.');
           alert('MetaMask is not installed. Please install MetaMask and try again.');
@@ -249,5 +303,6 @@
 
     window.addEventListener('DOMContentLoaded', initApp);
   </script>
+
 </body>
 </html>
